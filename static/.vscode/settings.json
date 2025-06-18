@@ -1,0 +1,12 @@
+{
+  "files.associations": {
+    ".sequelizerc": "javascript",
+    ".stylelintrc": "json",
+    "*.tsx": "typescriptreact",
+    ".env.*": "dotenv",
+    ".prettierrc": "json",
+    "bubble_sort.C": "cpp",
+    "bubble_sort.h": "c",
+    "initializer_list": "c"
+  }
+}
