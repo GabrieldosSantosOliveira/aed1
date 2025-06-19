@@ -1,95 +1,102 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "bubble_sort.h"
+#include <stdbool.h>
 #define N 13
-
-int comparador_crescente(const void *const a, const void *const b)
+void bubble_sort_crescente(int *ptr_vector, int size)
 {
-  const int *const x = (const int *const)a;
-  const int *const y = (const int *const)b;
+  int fim = size - 1;
+  int i = 0;
+  while (i < fim)
+  {
+    bool flag = true;
 
-  if (*x == *y)
-  {
-    return 0;
-  }
-  else if (*x < *y)
-  {
-    return -1;
-  }
-  else if (*x > *y)
-  {
-    return 1;
+    for (int i = 0; i < fim; i++)
+    {
+      if (ptr_vector[i] > ptr_vector[i + 1])
+      {
+        int tmp = ptr_vector[i];
+        ptr_vector[i] = ptr_vector[i + 1];
+        ptr_vector[i + 1] = tmp;
+        flag = false;
+      }
+    }
+    if (flag)
+    {
+      break;
+    }
+    fim--;
+    i++;
   }
 }
-int comparador_decrescente(const void *const a, const void *const b)
+void bubble_sort_decrescente(int *ptr_vector, int size)
 {
-  const int *const x = (const int *const)a;
-  const int *const y = (const int *const)b;
+  int fim = size - 1;
+  int i = 0;
+  while (i < fim)
+  {
+    bool flag = true;
 
-  if (*x == *y)
-  {
-    return 0;
+    for (int i = 0; i < fim; i++)
+    {
+      if (ptr_vector[i] < ptr_vector[i + 1])
+      {
+        int tmp = ptr_vector[i];
+        ptr_vector[i] = ptr_vector[i + 1];
+        ptr_vector[i + 1] = tmp;
+        flag = false;
+      }
+    }
+    if (flag)
+    {
+      break;
+    }
+    fim--;
+    i++;
   }
-  else if (*x < *y)
+}
+
+void print_list(int *ptr_vector, int size)
+{
+
+  for (int i = 0; i < size; i++)
   {
-    return 1;
+    printf("%d\t", ptr_vector[i]);
   }
-  else if (*x > *y)
-  {
-    return -1;
-  }
+
+  printf("\n");
 }
 int main()
 {
   int vector[N];
   srand(10);
-  //a
+  // a
   for (int i = 0; i < N; i++)
   {
     vector[i] = i;
   }
-  for (int i = 0; i < N; i++)
-  {
-    printf("%d\t", vector[i]);
-  }
-  printf("\n");
-  bubble_sort(vector, sizeof(int), N, comparador_crescente);
-  for (int i = 0; i < N; i++)
-  {
-    printf("%d\t", vector[i]);
-  }
-  printf("\n");
-  //b
+  print_list(vector, N);
+  bubble_sort_crescente(vector, N);
+  print_list(vector, N);
+
+  // b
   for (int i = 0; i < N; i++)
   {
     vector[i] = rand() % 100;
   }
-  for (int i = 0; i < N; i++)
-  {
-    printf("%d\t", vector[i]);
-  }
-  printf("\n");
-  bubble_sort(vector, sizeof(int), N, comparador_crescente);
-  for (int i = 0; i < N; i++)
-  {
-    printf("%d\t", vector[i]);
-  }
-  printf("\n");
-  //c
+  print_list(vector, N);
+
+  bubble_sort_crescente(vector, N);
+  print_list(vector, N);
+
+  // c
   for (int i = 0; i < N; i++)
   {
     vector[i] = i;
   }
-  for (int i = 0; i < N; i++)
-  {
-    printf("%d\t", vector[i]);
-  }
-  printf("\n");
-  bubble_sort(vector, sizeof(int), N, comparador_decrescente);
-  for (int i = 0; i < N; i++)
-  {
-    printf("%d\t", vector[i]);
-  }
-  printf("\n");
+  print_list(vector, N);
+
+  bubble_sort_decrescente(vector, N);
+  print_list(vector, N);
+
   return 0;
 }

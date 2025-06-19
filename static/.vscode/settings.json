@@ -7,6 +7,21 @@
     ".prettierrc": "json",
     "bubble_sort.C": "cpp",
     "bubble_sort.h": "c",
-    "initializer_list": "c"
+    "initializer_list": "c",
+    "list": "cpp",
+    "random": "c",
+    "array": "c",
+    "bitset": "c",
+    "deque": "c",
+    "forward_list": "c",
+    "string": "c",
+    "unordered_map": "c",
+    "unordered_set": "c",
+    "vector": "c",
+    "string_view": "c",
+    "scoped_allocator": "c",
+    "span": "c",
+    "stacktrace": "c",
+    "regex": "c"
   }
 }
