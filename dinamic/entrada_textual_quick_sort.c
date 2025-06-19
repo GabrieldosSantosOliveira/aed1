@@ -29,14 +29,14 @@ int main()
   quick_sort_crescente(list);
   print_list(list);
 
-  print_list(list1);
-  quick_sort_decrescente(list1);
-  print_list(list1);
+  // print_list(list1);
+  // quick_sort_decrescente(list1);
+  // print_list(list1);
 
-  printf("C ------------\n");
+  // printf("C ------------\n");
 
-  quick_sort_decrescente(list);
-  print_list(list);
+  // quick_sort_decrescente(list);
+  // print_list(list);
   fclose(file);
   free_list(list1);
   free_list(list);

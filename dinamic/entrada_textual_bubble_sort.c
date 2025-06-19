@@ -33,7 +33,6 @@ int main()
   quick_sort_decrescente(list1);
   print_list(list1);
 
-  printf("C ------------\n");
 
   quick_sort_decrescente(list);
   print_list(list);
