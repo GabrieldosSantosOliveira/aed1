@@ -13,6 +13,9 @@
     "list.h": "c",
     "quick_sort.h": "c",
     "cstdlib": "c",
-    "random": "c"
+    "random": "c",
+    "list_numerica.h": "c",
+    "stdlib.h": "c",
+    "list_string.h": "c"
   }
 }
