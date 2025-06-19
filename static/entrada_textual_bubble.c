@@ -10,7 +10,7 @@ void bubble_sort_crescente(char **ptr_vector, ll size)
   ll fim = size - 1;
   ll i = 0;
   char *tmp;
-  while (i < fim)
+  while (i < size)
   {
     bool flag = true;
 
@@ -38,7 +38,7 @@ void bubble_sort_decrescente(char **ptr_vector, ll size)
   ll i = 0;
   char *tmp;
 
-  while (i < fim)
+  while (i < size)
   {
     bool flag = true;
 

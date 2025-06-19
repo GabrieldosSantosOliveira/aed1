@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define N 11
+#define N 13
 typedef long long ll;
 
 ll pivo_rand(ll inicio, ll fim)
@@ -117,8 +117,7 @@ int main()
 {
 
   int vector[N];
-  srand(10);
-  // a
+  // // a
   for (ll i = 0; i < N; i++)
   {
     vector[i] = i;
@@ -128,6 +127,7 @@ int main()
   print_list(vector, N);
 
   // b
+  srand(10);
   for (ll i = 0; i < N; i++)
   {
     vector[i] = rand() % 100;
