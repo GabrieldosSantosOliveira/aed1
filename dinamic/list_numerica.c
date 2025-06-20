@@ -38,6 +38,16 @@ void add_end_list(List *ptr_list, int value)
 {
   REQUIRED_PTR_LIST(ptr_list);
   Node *node = *ptr_list;
+  if (*(ptr_list) == NULL)
+  {
+    Node *tmp = (Node *)malloc(sizeof(Node));
+    if (tmp == NULL)
+      exit(EXIT_FAILURE);
+    tmp->next = NULL;
+    tmp->value = value;
+    *(ptr_list) = tmp;
+    return;
+  }
   while (node->next != NULL)
   {
     node = node->next;
@@ -247,7 +257,8 @@ void bubble_sort_crescente(List *ptr_list)
       next = node->next;
       i++;
     }
-    if(flag){
+    if (flag)
+    {
       break;
     }
     fim = fim - 1;
@@ -259,7 +270,7 @@ void bubble_sort_decrescente(List *ptr_list)
   ll fim = size(ptr_list) - 1;
   while (true)
   {
-        bool flag = true;
+    bool flag = true;
 
     ll i = 0;
     Node *node = *(ptr_list);
@@ -270,13 +281,14 @@ void bubble_sort_decrescente(List *ptr_list)
       if (node->value < next->value)
       {
         swap(node, next);
-        flag= false;
+        flag = false;
       }
       node = node->next;
       next = node->next;
       i++;
     }
-    if(flag){
+    if (flag)
+    {
       break;
     }
     fim = fim - 1;
@@ -308,16 +320,16 @@ void quicksort_imp_crescente(Node *head, Node *tail)
     return;
   }
 
-  Node *pivot = particiona(head, tail);
-  quicksort_imp(head, pivot);
-  quicksort_imp(pivot->next, tail);
+  Node *pivot = particiona_crescente(head, tail);
+  quicksort_imp_crescente(head, pivot);
+  quicksort_imp_crescente(pivot->next, tail);
 }
 
 void quick_sort_crescente(List *v)
 {
   REQUIRED_PTR_LIST(v);
   Node *tail = getTail(v);
-  quicksort_imp(*(v), tail);
+  quicksort_imp_crescente(*(v), tail);
 }
 Node *particiona_decrescente(Node *head, Node *tail)
 {

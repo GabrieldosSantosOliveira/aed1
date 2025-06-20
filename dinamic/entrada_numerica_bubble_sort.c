@@ -35,6 +35,6 @@ int main()
 
   bubble_sort_decrescente(list);
   print_list(list);
-
+  free_list(list);
   return 0;
 }
