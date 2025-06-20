@@ -35,7 +35,7 @@ int main()
 
 
   quick_sort_decrescente(list);
-  print_list(list);
+ // print_list(list);
   fclose(file);
   free_list(list1);
   free_list(list);
