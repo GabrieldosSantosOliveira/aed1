@@ -12,4 +12,4 @@ entrada_textual_bubble_sort: entrada_textual_bubble_sort.c list_string.o
 entrada_textual_quick_sort: entrada_textual_quick_sort.c list_string.o
 	$(CC) $(CARGS) entrada_textual_quick_sort.c list_string.o -o main
 list_string.o: list_string.c list_string.h
-	$(CC) $(CARGS) -c list_numerica.c -o list_numerica.o
+	$(CC) $(CARGS) -c list_string.c -o list_string.o

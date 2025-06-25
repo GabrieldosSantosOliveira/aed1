@@ -37,13 +37,13 @@ gcc -Wall -O2 entrada_numerica_quick_sort.c list_numerica.o -o main
 ```
 # 3 Entrada textual usando quick sort
 ```
-gcc -Wall -O2 -c list_numerica.c -o list_numerica.o
+gcc -Wall -O2 -c list_string.c -o list_string.o
 gcc -Wall -O2 entrada_textual_quick_sort.c list_string.o -o main
 
 ```
 # 4 Entrada textual usando bubble
 ```
-gcc -Wall -O2 -c list_numerica.c -o list_numerica.o
+gcc -Wall -O2 -c list_string.c -o list_string.o
 gcc -Wall -O2 entrada_textual_bubble_sort.c list_string.o -o main
 
 ```
