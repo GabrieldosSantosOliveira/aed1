@@ -44,7 +44,7 @@ void bubble_sort_decrescente(char **ptr_vector, ll size)
 
     for (ll i = 0; i < fim; i++)
     {
-      if (strcmp(ptr_vector[i], ptr_vector[i + 1]) > 0)
+      if (strcmp(ptr_vector[i], ptr_vector[i + 1]) < 0)
       {
         tmp = ptr_vector[i];
         ptr_vector[i] = ptr_vector[i + 1];
