@@ -3,17 +3,18 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <stdio.h>
+typedef long long ll;
 typedef struct list *List;
 
 List *create();
-int size(List *ptr_list);
+ll size(List *ptr_list);
 void add_end_list(List *ptr_list, char value[200]);
 void add_begin_list(List *ptr_list, char value[200]);
 void remove_begin_list(List *ptr_list);
 void remove_end_list(List *ptr_list);
-void remove_by_index_list(List *ptr_list, int index);
-void add_by_index_list(List *ptr_list, char value[200], int index);
-char* find_by_index(List *ptr_list, int index);
+void remove_by_index_list(List *ptr_list, ll index);
+void add_by_index_list(List *ptr_list, char value[200], ll index);
+char *find_by_index(List *ptr_list, ll index);
 bool is_empty_list(List *ptr_list);
 void free_list(List *ptr_list);
 void print_list(List *ptr_list);

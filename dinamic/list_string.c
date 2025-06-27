@@ -1,6 +1,5 @@
 #include "list_string.h"
 #include <string.h>
-typedef long long ll;
 #define REQUIRED_PTR_LIST(ptr_list)       \
   if (ptr_list == NULL)                   \
   {                                       \
@@ -23,11 +22,11 @@ List *create()
   *(list) = NULL;
   return list;
 }
-int size(List *ptr_list)
+ll size(List *ptr_list)
 {
   REQUIRED_PTR_LIST(ptr_list);
   Node *node = *ptr_list;
-  int i = 0;
+  ll i = 0;
   while (node != NULL)
   {
     node = node->next;
@@ -92,11 +91,11 @@ void remove_end_list(List *ptr_list)
   prev->next = NULL;
   free(node);
 }
-char *find_by_index(List *ptr_list, int index)
+char *find_by_index(List *ptr_list, ll index)
 {
   REQUIRED_PTR_LIST(ptr_list);
   Node *node = *ptr_list;
-  int i = 0;
+  ll i = 0;
   while (node != NULL)
   {
     if (i == index)
@@ -133,7 +132,7 @@ void free_list(List *ptr_list)
   }
   free(ptr_list);
 }
-void remove_by_index_list(List *ptr_list, int index)
+void remove_by_index_list(List *ptr_list, ll index)
 {
   REQUIRED_PTR_LIST(ptr_list);
   if (index == 0)
@@ -146,7 +145,7 @@ void remove_by_index_list(List *ptr_list, int index)
   }
   Node *node = *ptr_list;
   Node *prev = NULL;
-  int i = 0;
+  ll i = 0;
   while (node != NULL)
   {
     if (i == index)
@@ -160,7 +159,7 @@ void remove_by_index_list(List *ptr_list, int index)
   prev->next = node->next;
   free(node);
 }
-void add_by_index_list(List *ptr_list, char value[200], int index)
+void add_by_index_list(List *ptr_list, char value[200], ll index)
 {
   REQUIRED_PTR_LIST(ptr_list);
   if (index == 0)
@@ -174,7 +173,7 @@ void add_by_index_list(List *ptr_list, char value[200], int index)
 
   Node *node = *ptr_list;
   Node *prev = NULL;
-  int i = 0;
+  ll i = 0;
   while (node != NULL)
   {
     if (i == index)
@@ -310,7 +309,7 @@ Node *get_random_node(Node *head, Node *tail)
   }
   ll index = rand() % n;
   tmp = head;
-  for (int i = 0; i < index; i++)
+  for (ll i = 0; i < index; i++)
   {
     tmp = tmp->next;
   }

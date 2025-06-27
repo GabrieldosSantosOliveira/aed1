@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define N 13
+#define N 10LL
 typedef long long ll;
 
 ll pivo_rand(ll inicio, ll fim)
 {
   return (rand() % (fim - inicio + 1)) + inicio;
 }
-int partition_crescente(int *v, ll begin, ll end)
+ll partition_crescente(int *v, ll begin, ll end)
 {
-  int index_p = pivo_rand(begin, end);
+  ll index_p = pivo_rand(begin, end);
   int tmp;
 
   tmp = v[begin];
@@ -17,32 +17,24 @@ int partition_crescente(int *v, ll begin, ll end)
   v[index_p] = tmp;
 
   int pivot = v[begin];
-  ll left = begin;
-  ll right = end;
-  while (left < right)
+  ll left = begin + 1;
+  for (ll i = begin + 1; i <= end; i++)
   {
-    while (left <= end && v[left] <= pivot)
+    if (v[i] < pivot)
     {
-      left++;
-    }
-    while (right > begin && v[right] > pivot)
-    {
-      right--;
-    }
-    if (left < right)
-    {
-      tmp = v[left];
+      tmp = v[i];
 
-      v[left] = v[right];
-      v[right] = tmp;
+      v[i] = v[left];
+      v[left] = tmp;
+      left++;
     }
   }
 
   tmp = v[begin];
-  v[begin] = v[right];
-  v[right] = tmp;
+  v[begin] = v[left - 1];
+  v[left - 1] = tmp;
 
-  return right;
+  return left - 1;
 }
 
 void quicksort_crescente(int *v, ll begin, ll end)
@@ -57,7 +49,7 @@ void quicksort_crescente(int *v, ll begin, ll end)
 
 int partition_decrescente(int *v, ll begin, ll end)
 {
-  int index_p = pivo_rand(begin, end);
+  ll index_p = pivo_rand(begin, end);
   int tmp;
 
   tmp = v[begin];
@@ -66,31 +58,23 @@ int partition_decrescente(int *v, ll begin, ll end)
 
   int pivot = v[begin];
   ll left = begin + 1;
-  ll right = end;
-  while (left < right)
+  for (ll i = begin + 1; i <= end; i++)
   {
-    while (left <= end && v[left] >= pivot)
+    if (v[i] > pivot)
     {
-      left++;
-    }
-    while (right > begin && v[right] < pivot)
-    {
-      right--;
-    }
-    if (left < right)
-    {
-      tmp = v[left];
+      tmp = v[i];
 
-      v[left] = v[right];
-      v[right] = tmp;
+      v[i] = v[left];
+      v[left] = tmp;
+      left++;
     }
   }
 
   tmp = v[begin];
-  v[begin] = v[right];
-  v[right] = tmp;
+  v[begin] = v[left - 1];
+  v[left - 1] = tmp;
 
-  return right;
+  return left - 1;
 }
 
 void quicksort_decrescente(int *v, ll begin, ll end)
@@ -104,7 +88,6 @@ void quicksort_decrescente(int *v, ll begin, ll end)
 }
 void print_list(int *ptr_vector, ll size)
 {
-
   for (ll i = 0; i < size; i++)
   {
     printf("%d\t", ptr_vector[i]);
@@ -116,8 +99,8 @@ void print_list(int *ptr_vector, ll size)
 int main()
 {
 
-  int vector[N];
-  // // a
+  int *vector = (int *)malloc(sizeof(int) * N);
+  // a
   for (ll i = 0; i < N; i++)
   {
     vector[i] = i;
@@ -130,7 +113,7 @@ int main()
   srand(10);
   for (ll i = 0; i < N; i++)
   {
-    vector[i] = rand() % 100;
+    vector[i] = rand();
   }
   print_list(vector, N);
   quicksort_crescente(vector, 0, N - 1);
@@ -144,5 +127,6 @@ int main()
   print_list(vector, N);
   quicksort_decrescente(vector, 0, N - 1);
   print_list(vector, N);
+  free(vector);
   return 0;
 }

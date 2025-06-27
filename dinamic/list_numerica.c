@@ -1,5 +1,4 @@
 #include "list_numerica.h"
-typedef long long ll;
 #define REQUIRED_PTR_LIST(ptr_list)       \
   if (ptr_list == NULL)                   \
   {                                       \
@@ -22,11 +21,11 @@ List *create()
   *(list) = NULL;
   return list;
 }
-int size(List *ptr_list)
+ll size(List *ptr_list)
 {
   REQUIRED_PTR_LIST(ptr_list);
   Node *node = *ptr_list;
-  int i = 0;
+  ll i = 0;
   while (node != NULL)
   {
     node = node->next;
@@ -91,11 +90,11 @@ void remove_end_list(List *ptr_list)
   prev->next = NULL;
   free(node);
 }
-int find_by_index(List *ptr_list, int index)
+int find_by_index(List *ptr_list, ll index)
 {
   REQUIRED_PTR_LIST(ptr_list);
   Node *node = *ptr_list;
-  int i = 0;
+  ll i = 0;
   while (node != NULL)
   {
     if (i == index)
@@ -132,7 +131,7 @@ void free_list(List *ptr_list)
   }
   free(ptr_list);
 }
-void remove_by_index_list(List *ptr_list, int index)
+void remove_by_index_list(List *ptr_list, ll index)
 {
   REQUIRED_PTR_LIST(ptr_list);
   if (index == 0)
@@ -145,7 +144,7 @@ void remove_by_index_list(List *ptr_list, int index)
   }
   Node *node = *ptr_list;
   Node *prev = NULL;
-  int i = 0;
+  ll i = 0;
   while (node != NULL)
   {
     if (i == index)
@@ -159,7 +158,7 @@ void remove_by_index_list(List *ptr_list, int index)
   prev->next = node->next;
   free(node);
 }
-void add_by_index_list(List *ptr_list, int value, int index)
+void add_by_index_list(List *ptr_list, int value, ll index)
 {
   REQUIRED_PTR_LIST(ptr_list);
   if (index == 0)
@@ -173,7 +172,7 @@ void add_by_index_list(List *ptr_list, int value, int index)
 
   Node *node = *ptr_list;
   Node *prev = NULL;
-  int i = 0;
+  ll i = 0;
   while (node != NULL)
   {
     if (i == index)
@@ -294,9 +293,31 @@ void bubble_sort_decrescente(List *ptr_list)
     fim = fim - 1;
   }
 }
-
+Node *get_random_node(Node *head, Node *tail)
+{
+  ll n = 0;
+  Node *tmp = head;
+  while (tmp != NULL && tmp != tail)
+  {
+    n++;
+    tmp = tmp->next;
+  }
+  if (n == 0)
+  {
+    return head;
+  }
+  ll index = rand() % n;
+  tmp = head;
+  for (ll i = 0; i < index; i++)
+  {
+    tmp = tmp->next;
+  }
+  return tmp;
+}
 Node *particiona_crescente(Node *head, Node *tail)
 {
+  Node *t = get_random_node(head, tail);
+  swap(head, t);
   Node *pivot = head;
   Node *left = head;
   Node *curr = head;
@@ -333,6 +354,8 @@ void quick_sort_crescente(List *v)
 }
 Node *particiona_decrescente(Node *head, Node *tail)
 {
+  Node *t = get_random_node(head, tail);
+  swap(head, t);
   Node *pivot = head;
   Node *left = head;
   Node *curr = head;
